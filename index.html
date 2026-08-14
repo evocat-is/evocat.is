@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evocatis</title>
+    <link rel="icon" type="image/jpeg" href="coterie.jpg">
+    <!-- Correctly pulling the clean Rethink Sans font style from Google Fonts -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-image: url('evocatis.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            height: 100vh; 
+            width: 100vw;
+            position: relative;
+            font-family: 'Rethink Sans', sans-serif;
+            overflow: hidden;
+        }
+        /* Statement on the bottom left using your gray styling - hidden by default */
+        .branding-statement {
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            color: #707C84;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            user-select: none;
+            opacity: 0; /* Fully invisible initially */
+            transition: opacity 0.4s ease; /* Smooth fade-in animation */
+        }
+        /* Reveal the text when hovering anywhere near the bottom section of the page */
+        body:hover .branding-statement {
+            opacity: 1;
+        }
+        /* Links on the bottom right using your gray styling - hidden by default */
+        .footer-navigation {
+            position: absolute;
+            bottom: 32px;
+            right: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            opacity: 0; /* Fully invisible initially */
+            transition: opacity 0.4s ease; /* Smooth fade-in animation */
+        }
+        /* Reveal the links when hovering anywhere near the bottom section of the page */
+        body:hover .footer-navigation {
+            opacity: 1;
+        }
+        .footer-navigation a {
+            color: #707C84;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Statement sits cleanly in the bottom left, fading in on hover -->
+    <div class="branding-statement">
+        Pauci sed Potentes.
+    </div>
+
+    <!-- Navigation links sit cleanly in the bottom right, fading in on hover -->
+    <div class="footer-navigation">
+        <a href="mailto:coterie@evocat.is">Coterie</a>
+        <a href="https://x.com/evocatix" target="_blank">X</a>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
