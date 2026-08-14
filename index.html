@@ -2,30 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- This vital line below forces mobile phones to scale the website properly -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Evocatis</title>
     <link rel="icon" type="image/jpeg" href="coterie.jpg">
-    <!-- Correctly pulling the clean Rethink Sans font style from Google Fonts -->
     <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background-image: url('Evocatis.jpg'); 
-            background-size: cover; 
-            background-position: center; 
-            background-repeat: no-repeat; 
-            height: 100vh; 
-            width: 100vw;
-            position: relative;
+        /* Base page resets */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000; /* Sets canvas background color directly to black */
             font-family: 'Rethink Sans', sans-serif;
-            overflow: hidden;
+            overflow: hidden; /* Stops accidental bouncy page scrolling */
+        }
+
+        body { 
+            background-image: url('Evocatis.jpg'); 
+            background-size: cover; /* Forces image to stretch to cover all white space */
+            background-position: center center; /* Keeps the middle part of your image visible */
+            background-repeat: no-repeat; 
+            position: relative;
             box-sizing: border-box;
         }
 
-        /* Desktop Layout (Default settings) */
+        /* 💻 Desktop Rules */
         .branding-statement {
             position: absolute;
             bottom: 32px;
@@ -34,7 +37,7 @@
             font-size: 12px;
             letter-spacing: 0.05em;
             user-select: none;
-            opacity: 0; /* Hidden on desktop until mouse hover */
+            opacity: 0; /* Hidden on desktop until cursor hover */
             transition: opacity 0.4s ease; 
         }
 
@@ -45,7 +48,7 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            opacity: 0; /* Hidden on desktop until mouse hover */
+            opacity: 0; /* Hidden on desktop until cursor hover */
             transition: opacity 0.4s ease; 
         }
 
@@ -56,55 +59,54 @@
             letter-spacing: 0.05em;
         }
 
-        /* Desktop Hover Interactions */
-        body:hover .branding-statement {
-            opacity: 1;
-        }
+        /* Hover interactions for desktop users */
+        body:hover .branding-statement,
         body:hover .footer-navigation {
             opacity: 1;
         }
 
-        /* 📱 Mobile Specific Rules (For screen sizes under 768 pixels wide) */
+        /* 📱 Mobile Specific Rules (Screens 768px and smaller) */
         @media (max-width: 768px) {
-            body {
-                /* Ensures the layout doesn't break if mobile address bars pop up */
-                height: -webkit-fill-available; 
-                overflow: hidden;
+            html, body {
+                height: 100vh;
+                height: -webkit-fill-available; /* Overrides mobile address bar shifting */
             }
 
             .branding-statement {
+                position: absolute;
                 left: 24px;
-                bottom: 64px; /* Moves text upward so it clears mobile browser bars */
-                opacity: 1;   /* Automatically visible on mobile since you can't hover */
-                font-size: 13px; 
+                bottom: 80px; /* Shift up slightly so it doesn't get covered by browser UI */
+                opacity: 1; /* Instantly visible on mobile */
+                font-size: 14px; 
             }
 
             .footer-navigation {
-                left: 24px;   /* Aligns links neatly to the left side underneath text */
-                right: auto;
-                bottom: 32px;
-                opacity: 1;   /* Automatically visible on mobile */
-                gap: 20px;
+                position: absolute;
+                left: 24px;   
+                right: 24px;
+                bottom: 36px;
+                opacity: 1; /* Instantly visible on mobile */
+                gap: 24px;
+                justify-content: flex-start; /* Neatly stacks along the bottom left */
             }
             
             .footer-navigation a {
-                font-size: 13px;
-                padding: 5px 0; /* Makes links slightly larger and easier to tap */
+                font-size: 14px;
+                display: inline-block;
+                padding: 8px 0; /* Creates an easier area for mobile fingers to tap */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Statement sits cleanly in the bottom left -->
     <div class="branding-statement">
         Pauci sed Potentes.
     </div>
 
-    <!-- Navigation links sit cleanly in the bottom right on desktop, stacks neatly on mobile -->
     <div class="footer-navigation">
         <a href="mailto:coterie@evocat.is">Coterie</a>
-        <a href="https://x.com/evocatix" target="_blank">X</a>
+        <a href="https://x.com" target="_blank">X</a>
     </div>
 
 </body>
