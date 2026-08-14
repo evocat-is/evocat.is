@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <!-- This vital line below forces mobile phones to scale the website properly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evocatis</title>
     <link rel="icon" type="image/jpeg" href="coterie.jpg">
     <!-- Correctly pulling the clean Rethink Sans font style from Google Fonts -->
     <link href="https://googleapis.com" rel="stylesheet">
+    
     <style>
         body { 
             margin: 0; 
@@ -18,8 +22,10 @@
             position: relative;
             font-family: 'Rethink Sans', sans-serif;
             overflow: hidden;
+            box-sizing: border-box;
         }
-        /* Statement on the bottom left using your gray styling - hidden by default */
+
+        /* Desktop Layout (Default settings) */
         .branding-statement {
             position: absolute;
             bottom: 32px;
@@ -28,14 +34,10 @@
             font-size: 12px;
             letter-spacing: 0.05em;
             user-select: none;
-            opacity: 0; /* Fully invisible initially */
-            transition: opacity 0.4s ease; /* Smooth fade-in animation */
+            opacity: 0; /* Hidden on desktop until mouse hover */
+            transition: opacity 0.4s ease; 
         }
-        /* Reveal the text when hovering anywhere near the bottom section of the page */
-        body:hover .branding-statement {
-            opacity: 1;
-        }
-        /* Links on the bottom right using your gray styling - hidden by default */
+
         .footer-navigation {
             position: absolute;
             bottom: 32px;
@@ -43,29 +45,63 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            opacity: 0; /* Fully invisible initially */
-            transition: opacity 0.4s ease; /* Smooth fade-in animation */
+            opacity: 0; /* Hidden on desktop until mouse hover */
+            transition: opacity 0.4s ease; 
         }
-        /* Reveal the links when hovering anywhere near the bottom section of the page */
-        body:hover .footer-navigation {
-            opacity: 1;
-        }
+
         .footer-navigation a {
             color: #707C84;
             text-decoration: none;
             font-size: 12px;
             letter-spacing: 0.05em;
         }
+
+        /* Desktop Hover Interactions */
+        body:hover .branding-statement {
+            opacity: 1;
+        }
+        body:hover .footer-navigation {
+            opacity: 1;
+        }
+
+        /* 📱 Mobile Specific Rules (For screen sizes under 768 pixels wide) */
+        @media (max-width: 768px) {
+            body {
+                /* Ensures the layout doesn't break if mobile address bars pop up */
+                height: -webkit-fill-available; 
+                overflow: hidden;
+            }
+
+            .branding-statement {
+                left: 24px;
+                bottom: 64px; /* Moves text upward so it clears mobile browser bars */
+                opacity: 1;   /* Automatically visible on mobile since you can't hover */
+                font-size: 13px; 
+            }
+
+            .footer-navigation {
+                left: 24px;   /* Aligns links neatly to the left side underneath text */
+                right: auto;
+                bottom: 32px;
+                opacity: 1;   /* Automatically visible on mobile */
+                gap: 20px;
+            }
+            
+            .footer-navigation a {
+                font-size: 13px;
+                padding: 5px 0; /* Makes links slightly larger and easier to tap */
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Statement sits cleanly in the bottom left, fading in on hover -->
+    <!-- Statement sits cleanly in the bottom left -->
     <div class="branding-statement">
         Pauci sed Potentes.
     </div>
 
-    <!-- Navigation links sit cleanly in the bottom right, fading in on hover -->
+    <!-- Navigation links sit cleanly in the bottom right on desktop, stacks neatly on mobile -->
     <div class="footer-navigation">
         <a href="mailto:coterie@evocat.is">Coterie</a>
         <a href="https://x.com/evocatix" target="_blank">X</a>
@@ -73,8 +109,3 @@
 
 </body>
 </html>
-
-
-
-
-
